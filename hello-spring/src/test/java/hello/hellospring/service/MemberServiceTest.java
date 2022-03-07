@@ -31,7 +31,7 @@ public class MemberServiceTest {
 	void join() {
 		// given
 		Member member1 = new Member();
-		member1.setName("Ã¶¼ö");
+		member1.setName("Ã¶ï¿½ï¿½");
 		
 		// when 
 		Long saveId = memberService.join(member1);
@@ -42,20 +42,20 @@ public class MemberServiceTest {
 	}
 	
 	@Test
-	public void Áßº¹_È¸¿ø_¿¹¿Ü() {
+	public void  joinTest11() {
 		// given
 		Member member1 = new Member();
-		member1.setName("Ã¶¼ö");
+		member1.setName("Ã¶ï¿½ï¿½");
 		
 		Member member2 = new Member();
-		member2.setName("Ã¶¼ö");
+		member2.setName("Ã¶ï¿½ï¿½");
 		
 		// when
 		memberService.join(member1);
 		IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 		
 		// then
-		assertThat(e.getMessage()).isEqualTo("ÀÌ¹Ì Á¸ÀçÇÏ´Â ÀÌ¸§ÀÌ ÀÖ½À´Ï´Ù.");
+		assertThat(e.getMessage()).isEqualTo("ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.");
 	}
 	
 	@Test
