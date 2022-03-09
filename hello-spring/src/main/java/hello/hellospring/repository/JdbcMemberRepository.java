@@ -12,6 +12,7 @@ import java.util.Optional;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.stereotype.Repository;
 
 import hello.hellospring.domain.Member;
 
