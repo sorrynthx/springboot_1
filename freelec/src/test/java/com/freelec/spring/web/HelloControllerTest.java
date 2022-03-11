@@ -14,20 +14,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class) 					 // SpringRunner ½ºÇÁ¸µ ½ÇÇàÀÚ »ç¿ë, ½ºÇÁ¸µºÎÆ®-JUnit Å×½ºÆ® ¿¬°á
-@WebMvcTest(controllers = HelloController.class) // Web(Spring MVC)¿¡ ÁıÁß, @Controller, @ControllerAdvice »ç¿ë (@Service, @Component ´Â ºÒ°¡)
+@RunWith(SpringRunner.class) 					 // SpringRunner ìŠ¤í”„ë§ ì‹¤í–‰ì ì‚¬ìš©, ìŠ¤í”„ë§ë¶€íŠ¸-JUnit í…ŒìŠ¤íŠ¸ ì—°ê²°.
+@WebMvcTest(controllers = HelloController.class) // Web(Spring MVC)ì— ì§‘ì¤‘, @Controller, @ControllerAdvice ì‚¬ìš© (@Service, @Component ëŠ” ë¶ˆê°€).
 public class HelloControllerTest {
 
-	@Autowired				// ½ºÇÁ¸µÀÌ °ü¸®ÇÏ´Â ºó(Bean) ÁÖÀÔ
-	private MockMvc mvc;	// À¥ API Å×½ºÆ®ÇÒ ¶§ »ç¿ë, MVCÅ×½ºÆ® ½ÃÀÛÁ¡
+	@Autowired				// ìŠ¤í”„ë§ì´ ê´€ë¦¬í•˜ëŠ” ë¹ˆ(Bean) ì£¼ì….
+	private MockMvc mvc;	// ì›¹ API í…ŒìŠ¤íŠ¸í•  ë•Œ ì‚¬ìš©, MVCí…ŒìŠ¤íŠ¸ ì‹œì‘ì .
 	
 	@Test
 	public void hello() throws Exception {
 		String hello = "hello";
 		
-		mvc.perform(get("/hello"))				// MockMvc¸¦ ÅëÇØ /hello ÁÖ¼Ò·Î HTTP GET ¿äÃ»
-			.andExpect(status().isOk())			// mvc.perform °á°ú °ËÁõ, HTTP Status °ËÁõ(200)
-			.andExpect(content().string(hello));// Controller¿¡¼­ "hello"¸®ÅÏ ¸Â´ÂÁö °ËÁõ
+		mvc.perform(get("/hello"))				// MockMvcë¥¼ í†µí•´ /hello ì£¼ì†Œë¡œ HTTP GET ìš”ì²­.
+			.andExpect(status().isOk())			// mvc.perform ê²°ê³¼ ê²€ì¦, HTTP Status ê²€ì¦(200).
+			.andExpect(content().string(hello));// Controllerì—ì„œ "hello"ë¦¬í„´ ë§ëŠ”ì§€ ê²€ì¦.
 	}
 	
 	@Test
@@ -35,14 +35,15 @@ public class HelloControllerTest {
 		String name = "hello";
 		int amount = 1000;
 		
-		// paramÀº String¸¸ °¡´É
+		// paramì€ Stringë§Œ ê°€ëŠ¥
 		mvc.perform(
 					get("/hello/dto")
 						.param("name", name)
 						.param("amount", String.valueOf(amount)))
 						.andExpect(status().isOk())
-						.andExpect(jsonPath("$.name", is(name)))		// jsonÀÀ´ä°ªÀ» ÇÊµåº°·Î °ËÁõÇÒ ¼ö ÀÖ´Â ¸Ş¼Òµå
+						.andExpect(jsonPath("$.name", is(name)))		// jsonì‘ë‹µê°’ì„ í•„ë“œë³„ë¡œ ê²€ì¦í•  ìˆ˜ ìˆëŠ” ë©”ì†Œë“œ.
 						.andExpect(jsonPath("$.amount", is(amount)));
 	}
 	
 }
+ 

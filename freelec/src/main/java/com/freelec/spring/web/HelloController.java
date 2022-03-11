@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.freelec.spring.web.dto.HelloResponseDto;
 
-@RestController	// ÄÁÆ®·Ñ·¯¸¦ JSONÀ¸·Î ¹İÈ¯ÇÏ´Â ÄÁÆ®·Ñ·¯ (@ResponsBody¸¦ ÇÑ¹ø¿¡ »ç¿ë)
+@RestController	// ì»¨íŠ¸ë¡¤ëŸ¬ë¥¼ JSONìœ¼ë¡œ ë°˜í™˜í•˜ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬ (@ResponsBodyë¥¼ í•œë²ˆì— ì‚¬ìš©).
 public class HelloController {
 	
 	@GetMapping("/hello")
