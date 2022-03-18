@@ -16,6 +16,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-mustache'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
@@ -26,7 +27,6 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/com.h2database/h2
 	implementation group: 'com.h2database', name: 'h2', version: '2.1.210'
-	
 	
 }
 

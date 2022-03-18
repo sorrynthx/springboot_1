@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.freelec.spring.domain.BaseTimeEntity;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Getter					// Getter 메소드 생성
 @NoArgsConstructor		// 기본 생성자 자동 추가
 @Entity					// 테이블과 링크될 클래스 나타냄 (SalesManager.java -> sales_manager table 매칭)
-public class Posts {
+public class Posts extends BaseTimeEntity {					// 저장시간, 수정시간 자동으로 넣어주는 BaseTimeEntity 상속
 	
 	@Id														// 해당 테이블의 PK필드
 	@GeneratedValue(strategy = GenerationType.IDENTITY)		// PK 생성 규칙 의미 (GenerationType.IDENTITY = auto_increment) 

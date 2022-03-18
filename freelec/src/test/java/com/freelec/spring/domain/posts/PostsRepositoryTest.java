@@ -2,6 +2,8 @@ package com.freelec.spring.domain.posts;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -43,6 +45,30 @@ public class PostsRepositoryTest {
 		Posts posts = postsList.get(0);
 		assertThat(posts.getTitle()).isEqualTo(title);
 		assertThat(posts.getContent()).isEqualTo(content);
+	}
+	
+	@Test
+	public void BaseTimeEntity_등록() {
+		// giben
+		// (int year, Month month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond)
+		LocalDateTime now = LocalDateTime.of(2022, 3, 18, 0 ,0, 0);
+		postsRepository.save(Posts.builder()
+							.title("title")
+							.content("content")
+							.author("author")
+							.build());
+		
+		// when
+		List<Posts> postsList = postsRepository.findAll();
+		
+		// then
+		Posts posts = postsList.get(0);
+		
+		System.out.println(">>>>> createdDate=" + posts.getCreatedDate() + ", " + "modifiedDate=" + posts.getModifiedDate());
+		
+		assertThat(posts.getCreatedDate()).isEqualTo(now);
+		assertThat(posts.getModifiedDate()).isEqualTo(now);
+		
 	}
 	
 }
