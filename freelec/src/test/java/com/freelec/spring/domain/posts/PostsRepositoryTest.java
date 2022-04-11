@@ -3,7 +3,6 @@ package com.freelec.spring.domain.posts;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;

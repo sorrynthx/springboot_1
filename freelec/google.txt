@@ -1,0 +1,2 @@
+clientID = 242813047203-gf5p3pugdvm56pittb0r1q7thm5qpm0s.apps.googleusercontent.com
+clietnPw = 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
