@@ -37,13 +37,13 @@ public class OAuthAttributes {
 
 	
 	private static OAuthAttributes ofGoogle(String userNameAttributeName, 
-											Map<String, Object> attributes2) {
+											Map<String, Object> attributes) {
 		
 		return OAuthAttributes.builder()
-								.name((String) attributes2.get("name"))
-								.email((String) attributes2.get("email"))
-								.picture((String) attributes2.get("picture"))
-								.attributes(attributes2)
+								.name((String) attributes.get("name"))
+								.email((String) attributes.get("email"))
+								.picture((String) attributes.get("picture"))
+								.attributes(attributes)
 								.nameAttributeKey(userNameAttributeName)
 								.build();
 	}
