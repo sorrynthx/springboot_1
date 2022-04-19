@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.freelec.spring.config.auth.dto.OAuthAttributes;
 import com.freelec.spring.config.auth.dto.SessionUser;
-import com.freelec.spring.domain.user.User;
+import com.freelec.spring.domain.user.User_;
 import com.freelec.spring.domain.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -47,7 +47,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		OAuthAttributes attributes = OAuthAttributes
 										.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 		
-		User user = saveOrUpdate(attributes);
+		User_ user = saveOrUpdate(attributes);
 		
 		// SessionUser. 세션에 사용자 정보를 저장하기 위한 Dto 클래스
 		httpSession.setAttribute("user", new SessionUser(user));
@@ -61,9 +61,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	}
 
 	// 구글 정보 업데이트 시, 정보 수정(이름, 사진)
-	private User saveOrUpdate(OAuthAttributes attributes) {
+	private User_ saveOrUpdate(OAuthAttributes attributes) {
 		
-		User user = userRepository.findByEmail(attributes.getEmail())
+		User_ user = userRepository.findByEmail(attributes.getEmail())
 									.map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
 									.orElse(attributes.toEntity());
 		

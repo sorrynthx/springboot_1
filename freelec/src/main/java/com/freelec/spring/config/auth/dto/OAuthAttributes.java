@@ -3,7 +3,7 @@ package com.freelec.spring.config.auth.dto;
 import java.util.Map;
 
 import com.freelec.spring.domain.user.Role;
-import com.freelec.spring.domain.user.User;
+import com.freelec.spring.domain.user.User_;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -49,8 +49,8 @@ public class OAuthAttributes {
 	}
 	
 	// User 엔티티 생성. OAuthAttributes에서 엔티티를 생성하는 시점은 처음 가입할 때. 가입 시, 기본 권한을 GUEST로 사용
-	public User toEntity() {
-		return User.builder()
+	public User_ toEntity() {
+		return User_.builder()
 					.name(name)
 					.email(email)
 					.picture(picture)
