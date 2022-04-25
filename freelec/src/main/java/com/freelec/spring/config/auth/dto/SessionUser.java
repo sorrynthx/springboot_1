@@ -1,11 +1,17 @@
 package com.freelec.spring.config.auth.dto;
 
+import java.io.Serializable;
+
 import com.freelec.spring.domain.user.User_;
 
 import lombok.Getter;
 
 @Getter
-public class SessionUser {
+public class SessionUser implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String email;
 	private String picture;

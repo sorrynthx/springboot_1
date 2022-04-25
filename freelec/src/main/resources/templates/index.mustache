@@ -8,15 +8,15 @@
 	        <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
 	        
 	        <!-- 로그인 true -->
-	        {{ #user }}
-	        	Logged in as: <span id="user">{{name}}</span>
+	        {{ #loginUser }}
+	        	Logged in as: <span id="user">{{loginUser}}</span>
 				<a href="/logout" class="btn btn-info active" role="button">Logout</a><!-- 스프링 시큐리티에서 기본적으로 제공하는 logout url -->
-			{{ /user }}
+			{{ /loginUser }}
 			
 			<!-- 로그인 false -->
-			{{ ^user }}
+			{{ ^loginUser }}
 				<a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-            {{ /user }}
+            {{ /loginUser }}
 	    </div>
 	</div>
 

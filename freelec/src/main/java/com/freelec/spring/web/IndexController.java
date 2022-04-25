@@ -1,12 +1,11 @@
 package com.freelec.spring.web;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.freelec.spring.config.auth.LoginUser;
 import com.freelec.spring.config.auth.dto.SessionUser;
 import com.freelec.spring.service.posts.PostsService;
 import com.freelec.spring.web.dto.PostsResponseDto;
@@ -18,15 +17,18 @@ import lombok.RequiredArgsConstructor;
 public class IndexController {
 	
 	private final PostsService postsService;
-	private final HttpSession httpSession;
 	
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Model model, @LoginUser SessionUser user) {
 		model.addAttribute("posts", postsService.findAllDesc());
 		
-		SessionUser user = (SessionUser) httpSession.getAttribute("user");
+		//SessionUser user = (SessionUser) httpSession.getAttribute("user"); -> 어노테이션으로 대체
 		
-		if (user != null) model.addAttribute("user", user);
+		model.addAttribute("posts", postsService.findAllDesc());
+		
+		if (user != null) {
+            model.addAttribute("loginUser", user.getName());
+        }
 		
 		return "index";
 	}
