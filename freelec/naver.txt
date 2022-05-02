@@ -1,0 +1,2 @@
+clientId = cmG93NJKAmGCAyX0QKSm
+clientPw = 25jhRNOa11
