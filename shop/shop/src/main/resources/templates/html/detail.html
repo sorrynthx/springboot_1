@@ -5,6 +5,15 @@
 	<title>shop study</title>
 </head>
 <body>
+	
+	<h3>thymeleaf href</h3>
+	<div>
+		<a th:href="@{https://www.thymeleaf.org/}">thymeleaf 공식 홈페이지 ---> </a><br>
+		<a th:href="@{/shop/content}">/shop/content page 으로 이동  ---> </a>
+	</div>
+	
+	<hr>
+
 	<h1>상품 출력 예시 </h1>
 	<p>
 		상품명: <span th:text="${itemDto.itemNm}"></span>
@@ -18,5 +27,91 @@
 	<p>
 		상품가격: <span th:text="${itemDto.price}"></span>
 	</p>
+	
+	<br>
+	<hr>
+	<br>
+	
+	
+	<h3>thymeleaf 반복</h3>
+	<table border="1">
+		<thead>
+			<td>순번</td>
+			<td>상품명</td>
+			<td>상품설명</td>
+			<td>가격</td>
+			<td>상품등록일</td>
+		</thead>
+		
+		<tbody>
+			<tr th:each="itemDto, status: ${itemDtoList}">
+				<td th:text="${status.index}"></td>
+				<td th:text="${itemDto.itemNm}"></td>
+				<td th:text="${itemDto.itemDetail}"></td>
+				<td th:text="${itemDto.price}"></td>
+				<td th:text="${itemDto.regTime}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	<hr>
+	<br>
+	
+	<h3>thymeleaf 조건 </h3>
+	<table border="1">
+		<thead>
+			<td>순번</td>
+			<td>상품명</td>
+			<td>상품설명</td>
+			<td>가격</td>
+			<td>상품등록일</td>
+		</thead>
+		
+		<tbody>
+			<tr th:each="itemDto, status: ${itemDtoList}">
+				
+				<td th:if="${status.even}" th:text="짝수"></td>
+				<td th:unless="${status.even}" th:text="홀수"></td>
+				
+				<td th:text="${itemDto.itemNm}"></td>
+				<td th:text="${itemDto.itemDetail}"></td>
+				<td th:text="${itemDto.price}"></td>
+				<td th:text="${itemDto.regTime}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	<hr>
+	<br>
+	
+	<h3>thymeleaf switch, case </h3>
+	<table border="1">
+		<thead>
+			<td>순번</td>
+			<td>상품명</td>
+			<td>상품설명</td>
+			<td>가격</td>
+			<td>상품등록일</td>
+		</thead>
+		
+		<tbody>
+			<tr th:each="itemDto, status: ${itemDtoList}">
+		
+				<td th:switch=${status.even}>
+					<span th:case=true>짝수</span>
+					<span th:case=false>홀수</span>
+				</td>
+				
+				<td th:text="${itemDto.itemNm}"></td>
+				<td th:text="${itemDto.itemDetail}"></td>
+				<td th:text="${itemDto.price}"></td>
+				<td th:text="${itemDto.regTime}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.sample.shop.controller;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,21 @@ public class IndexController {
 		itemResDto.setPrice(10000);
 		itemResDto.setRegTime(LocalDateTime.now());
 		
+		
+		List<ItemResponseDto> itemDtoList = new ArrayList<>();
+		
+		for (int i=1; i<=10; i++) {
+			ItemResponseDto itemDto = new ItemResponseDto();
+			itemDto.setItemDetail("상품 상세 설명 : => " + i);
+			itemDto.setItemNm("테스트 상품  " + i);
+			itemDto.setPrice(10000 * i);
+			itemDto.setRegTime(LocalDateTime.now());
+			itemDtoList.add(itemDto);
+		}
+		
+		
 		model.addAttribute("itemDto", itemResDto);
+		model.addAttribute("itemDtoList", itemDtoList);
 		return "html/detail";
 	}
 	
